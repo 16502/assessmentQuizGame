@@ -12,6 +12,11 @@ function buttons:__init(group, xPosition, yPosition, text, width, length, id)
     self.id = id -- Assigns the id of the button to id
 end
 
-function buttons:buttonRect()
+function buttons:draw()
+    local function button(event)
+
+    end
 
 end
+
+table = {q="", a={"","","",}
