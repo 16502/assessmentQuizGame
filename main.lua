@@ -16,3 +16,7 @@ correctAnswer = {"1","2","3","4","5","6","7"}
 print(questions[1])
 print(answers[1])
 print(correctAnswer[1])
+
+
+local buttons = {}
+buttons:drawButtons()
