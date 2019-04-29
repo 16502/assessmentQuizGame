@@ -1,5 +1,5 @@
 require("classes.30logglobal")
-local buttons = require("classes.buttons") -- assigns the variable "buttons" to the class buttons so it can be called apon
+local Buttons = require("classes.buttons") -- assigns the variable "buttons" to the class buttons so it can be called apon
 -------------------------
 -- Constants
 -------------------------
@@ -17,6 +17,6 @@ print(questions[1])
 print(answers[1])
 print(correctAnswer[1])
 
-
-local buttons = {}
-buttons:drawButtons()
+Buttons:drawButtons("2", display.contentCenterX, display.contentCenterY)
+Buttons:drawButtons("1", display.contentCenterX, display.contentCenterY + 500)
+Buttons:drawButtons("3", display.contentCenterX, display.contentCenterY - 500)
