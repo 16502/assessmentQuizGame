@@ -18,5 +18,3 @@ function buttons:draw()
     end
 
 end
-
-table = {q="", a={"","","",}
