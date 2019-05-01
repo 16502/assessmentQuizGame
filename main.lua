@@ -1,4 +1,5 @@
 require("classes.30logglobal")
+local widget = require("widget")
 local Buttons = require("classes.buttons") -- assigns the variable "buttons" to the class buttons so it can be called apon
 -------------------------
 -- Constants
@@ -17,4 +18,4 @@ print(questions[1])
 print(answers[1])
 print(correctAnswer[1])
 
-Buttons:drawButtons(display.contentCenterX, display.contentCenterY, "1", 600, 600)
+buttons = Buttons:new(display.contentCenterX, display.contentCenterY, questions[2], 500, 200, answers[2])
