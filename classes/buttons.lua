@@ -15,14 +15,19 @@ end
 
 function Buttons:drawButtons()
     local function handleButtonEvent(event)
-            print(self.id)
+            if self.id == "BUTTON ONE" then
+                print("BUTTON_ONE")
+            elseif self.id == "BUTTON TWO" then
+                print("BUTTON_TWO")
+            elseif self.id == "BUTTON THREE" then
+                print("BUTTON_THREE")
+            end
     end
     local buttons = widget.newButton(
         {
             label = self.text,
             onRelease = handleButtonEvent,
             emboss = false,
-            -- Properties for a rounded rectangle button
             shape = "roundedRect",
             width = self.width,
             height = self.height,
@@ -31,7 +36,7 @@ function Buttons:drawButtons()
             cornerRadius = 1,
             fillColor = { default={1,0,0,0.5}, over={1,0.1,0.7,1} },
             strokeColor = { default={1,0.4,0,1}, over={0.8,0.8,1,1} },
-            strokeWidth = 4,
+            strokeWidth = 25,
             fontSize = "65"
         }
     )

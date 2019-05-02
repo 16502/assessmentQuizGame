@@ -18,4 +18,8 @@ print(questions[1])
 print(answers[1])
 print(correctAnswer[1])
 
-buttons = Buttons:new(display.contentCenterX, display.contentCenterY, questions[2], 500, 200, answers[2])
+QuestionText = display.newText("Question", centerX, centerY - 500, native.systemFont, 72)
+
+answerButtonThree = Buttons:new(centerX, centerY + 550, "BUTTON THREE", 800, 200, "BUTTON THREE")
+answerButtonTWO = Buttons:new(centerX, centerY + 250, "BUTTON TWO", 800, 200, "BUTTON TWO")
+answerButtonONE = Buttons:new(centerX, centerY - 50, "BUTTON ONE", 800, 200, "BUTTON ONE")
