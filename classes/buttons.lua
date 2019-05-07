@@ -34,7 +34,7 @@ function Buttons:drawButtons()
             x = self.xPosition,
             y = self.yPosition,
             cornerRadius = 1,
-            fillColor = { default={1,0,0,0.5}, over={1,0.1,0.7,1} },
+            fillColor = { default={1,0,0,1}, over={1,0.1,0.7,1} },
             strokeColor = { default={1,0.4,0,1}, over={0.8,0.8,1,1} },
             strokeWidth = 25,
             fontSize = "65"
