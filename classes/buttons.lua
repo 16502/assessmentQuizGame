@@ -23,7 +23,7 @@ function Buttons:drawButtons()
                 print("BUTTON_THREE")
             end
     end
-    local buttons = widget.newButton(
+    self.button = widget.newButton(
         {
             label = self.text,
             onRelease = handleButtonEvent,
@@ -40,6 +40,11 @@ function Buttons:drawButtons()
             fontSize = "65"
         }
     )
+end
+
+function Buttons:place(x, y)
+    self.button.x = x
+    self.button.y = y
 end
 
 return Buttons

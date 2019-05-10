@@ -4,15 +4,38 @@ local Buttons = require("classes.buttons") -- assigns the variable "buttons" to 
 ----------------------------------------------------------
 -- Constants
 ----------------------------------------------------------
-local fullWidth = display.contentWeight
+local fullWidth = display.contentWidth
 local fullHeight = display.contentHeight
 local centerX = display.contentCenterX
 local centerY = display.contentCenterY
 ----------------------------------------------------------
 -- Questions and answers
 ----------------------------------------------------------
-questions = {"One","Two","Three","Four","Five","Six","Seven"}
-answers = {"A","B","C","D","E","F","G"}
+questions = {
+    "What Country has the largest population in the world?",
+    "How long is the longest bridge in the world?",
+    "What is the world's most popular sport?",
+    "What's the highest grossing movie of all time?",
+    "How many bones does an adult human have?",
+    "What is one quarter of 1,000?",
+    "Which ocean surrounds the Maldives?",
+    "Who wrote the book 1984?",
+    "What is the national flower of Wales?",
+    "Which Russian town suffered an infamous nuclear disaster in 1986?"
+}
+
+answers = {
+    {"China","India","United States"},
+    {"164,800m","157,317m","113,700m"},
+    {"Football","Cricket","Hockey"},
+    {"Avatar","Avengers: Endgame","Titanic"},
+    {"206","180","200"},
+    {"250","200","125"},
+    {"Indian Ocean","Pacific Ocean","Atlantic Ocean"},
+    {"George Orwell","Margaret Atwood","Aldous Huxley"},
+    {"Daffodil","Daisy","Poppy"},
+    {"Chernobyl","Moscow","Saint Petersburg"}
+}
 correctAnswer = {"1","2","3","4","5","6","7"}
 print(questions[1])
 print(answers[1])
@@ -20,17 +43,16 @@ print(correctAnswer[1])
 ----------------------------------------------------------
 -- Buttons and Qestion Text
 ----------------------------------------------------------
-QuestionText = display.newText("Question", centerX, centerY - 500, native.systemFont, 72)
+QuestionText = display.newText("Question", centerX, centerY + 2000, native.systemFont, 72)
+answerButtonTHREE = Buttons:new(centerX, centerY + 2000, "BUTTON THREE", 800, 200, "BUTTON THREE")
+answerButtonTWO = Buttons:new(centerX, centerY + 2000, "BUTTON TWO", 800, 200, "BUTTON TWO")
+answerButtonONE = Buttons:new(centerX, centerY + 2000, "BUTTON ONE", 800, 200, "BUTTON ONE")
 
-
-local buttonsGroup = display.newGroup()
-answerButtonThree = Buttons:new(centerX, centerY + 550, "BUTTON THREE", 800, 200, "BUTTON THREE")
-answerButtonTWO = Buttons:new(centerX, centerY + 250, "BUTTON TWO", 800, 200, "BUTTON TWO")
-answerButtonONE = Buttons:new(centerX, centerY - 50, "BUTTON ONE", 800, 200, "BUTTON ONE")
-answerButtonONE.alpha = 0
 ----------------------------------------------------------
 -- Name Entry
 ----------------------------------------------------------
+print( string.find( "Hello Corona user", "Corona" ) )
+
 local nameTextOptions =
 {
     text = "Please enter your name.",
@@ -46,17 +68,24 @@ local name = "name"
 nameTextBox = native.newTextField( centerX, centerY, 800, 150 )
 local continueButton
 -- Function to execute when continueButton is released
+
 local function continueButtonRelease(event)
     if ( "ended" == event.phase ) then
         name = nameTextBox.text
         print(name)
         if nameTextBox.text == "" then
 			local alert = native.showAlert( "Error - No Text Entered", "There was no text entered in the textbox")
-		end
-        nameText:removeSelf()
-        nameTextBox:removeSelf()
-        continueButton:removeSelf()
-
+        elseif string.find(nameTextBox.text, 10) ~= nil then
+            local alert = native.showAlert( "Error - Numbers Entered", "There was numbers entered in the textbox")
+        else
+            nameText:removeSelf()
+            nameTextBox:removeSelf()
+            continueButton:removeSelf()
+            answerButtonONE:place(centerX, centerY + 400)
+            answerButtonTWO:place(centerX, centerY)
+            answerButtonTHREE:place(centerX, centerY - 400)
+            -- create function which is called that starts and goes through the game
+        end
     end
 end
 -- Create the widget
