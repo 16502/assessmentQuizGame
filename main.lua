@@ -67,7 +67,7 @@ local nameText = display.newText(nameTextOptions)
 local name = "name"
 nameTextBox = native.newTextField( centerX, centerY, 800, 150 )
 local continueButton
--- Function to execute when continueButton is released
+-- Function to execute when continu eButton is released
 
 local function continueButtonRelease(event)
     if ( "ended" == event.phase ) then
