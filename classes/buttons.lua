@@ -26,6 +26,7 @@ function Buttons:drawButtons()
     self.button = widget.newButton(
         {
             label = self.text,
+            labelColor = { default={0,0,0,1}, over={0,0,0,1} },
             onRelease = handleButtonEvent,
             emboss = false,
             shape = "roundedRect",
@@ -34,17 +35,15 @@ function Buttons:drawButtons()
             x = self.xPosition,
             y = self.yPosition,
             cornerRadius = 1,
-            fillColor = { default={1,0,0,1}, over={1,0.1,0.7,1} },
-            strokeColor = { default={1,0.4,0,1}, over={0.8,0.8,1,1} },
+            fillColor = { default={0.4,235,1,1}, over={0.4,0.9,1,1} },
+            strokeColor = { default={0.4,0.9,1,1}, over={0.4,0.9,1,1} },
             strokeWidth = 25,
             fontSize = "65"
         }
     )
 end
-
 function Buttons:place(x, y)
     self.button.x = x
     self.button.y = y
 end
-
 return Buttons

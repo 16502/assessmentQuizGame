@@ -41,18 +41,18 @@ print(questions[1])
 print(answers[1])
 print(correctAnswer[1])
 ----------------------------------------------------------
--- Buttons and Qestion Text
+-- Creating and drawing Buttons
 ----------------------------------------------------------
 QuestionText = display.newText("Question", centerX, centerY + 2000, native.systemFont, 72)
 answerButtonTHREE = Buttons:new(centerX, centerY + 2000, "BUTTON THREE", 800, 200, "BUTTON THREE")
 answerButtonTWO = Buttons:new(centerX, centerY + 2000, "BUTTON TWO", 800, 200, "BUTTON TWO")
 answerButtonONE = Buttons:new(centerX, centerY + 2000, "BUTTON ONE", 800, 200, "BUTTON ONE")
 
+
+
 ----------------------------------------------------------
 -- Name Entry
 ----------------------------------------------------------
-print( string.find( "Hello Corona user", "Corona" ) )
-
 local nameTextOptions =
 {
     text = "Please enter your name.",
@@ -74,17 +74,57 @@ local function continueButtonRelease(event)
         name = nameTextBox.text
         print(name)
         if nameTextBox.text == "" then
-			local alert = native.showAlert( "Error - No Text Entered", "There was no text entered in the textbox")
-        elseif string.find(nameTextBox.text, 10) ~= nil then
-            local alert = native.showAlert( "Error - Numbers Entered", "There was numbers entered in the textbox")
+			local alert = native.showAlert("Error - No Text Entered", "There was no text entered in the textbox, Please enter your name")
+        elseif string.len(nameTextBox.text) <= 2 then
+            local alert = native.showAlert("Error - To few characters", "Please enter your name")
+        elseif string.find(nameTextBox.text, 1) ~= nil then
+            local alert = native.showAlert("Error - Numbers Entered", "Please enter your name")
+        elseif string.find(nameTextBox.text, 2) ~= nil then
+            local alert = native.showAlert("Error - Numbers Entered", "Please enter your name")
+        elseif string.find(nameTextBox.text, 3) ~= nil then
+            local alert = native.showAlert("Error - Numbers Entered", "Please enter your name")
+        elseif string.find(nameTextBox.text, 4) ~= nil then
+            local alert = native.showAlert("Error - Numbers Entered", "Please enter your name")
+        elseif string.find(nameTextBox.text, 5) ~= nil then
+            local alert = native.showAlert("Error - Numbers Entered", "Please enter your name")
+        elseif string.find(nameTextBox.text, 6) ~= nil then
+            local alert = native.showAlert("Error - Numbers Entered", "Please enter your name")
+        elseif string.find(nameTextBox.text, 7) ~= nil then
+            local alert = native.showAlert("Error - Numbers Entered", "Please enter your name")
+        elseif string.find(nameTextBox.text, 8) ~= nil then
+            local alert = native.showAlert("Error - Numbers Entered", "Please enter your name")
+        elseif string.find(nameTextBox.text, 9) ~= nil then
+            local alert = native.showAlert("Error - Numbers Entered", "Please enter your name")
+        elseif string.find(nameTextBox.text, 0) ~= nil then
+            local alert = native.showAlert("Error - Numbers Entered", "Please enter your name")
         else
             nameText:removeSelf()
             nameTextBox:removeSelf()
             continueButton:removeSelf()
-            answerButtonONE:place(centerX, centerY + 400)
-            answerButtonTWO:place(centerX, centerY)
-            answerButtonTHREE:place(centerX, centerY - 400)
-            -- create function which is called that starts and goes through the game
+            answerButtonONE:place(centerX, centerY + 125)
+            answerButtonTWO:place(centerX, centerY + 425)
+            answerButtonTHREE:place(centerX, centerY+ 725)
+            ----------------------------------------------------------
+            -- Game
+            ----------------------------------------------------------
+            score = 0
+            function GameFunction ()
+                QuestionText.y = centerY - 100
+            end
+            GameFunction()
+
+
+
+
+
+
+
+
+
+
+
+
+
         end
     end
 end
