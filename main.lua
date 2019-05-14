@@ -44,9 +44,11 @@ print(correctAnswer[1])
 -- Creating and drawing Buttons
 ----------------------------------------------------------
 QuestionText = display.newText("Question", centerX, centerY + 2000, native.systemFont, 72)
-answerButtonTHREE = Buttons:new(centerX, centerY + 2000, "BUTTON THREE", 800, 200, "BUTTON THREE")
-answerButtonTWO = Buttons:new(centerX, centerY + 2000, "BUTTON TWO", 800, 200, "BUTTON TWO")
+
 answerButtonONE = Buttons:new(centerX, centerY + 2000, "BUTTON ONE", 800, 200, "BUTTON ONE")
+answerButtonTWO = Buttons:new(centerX, centerY + 2000, "BUTTON TWO", 800, 200, "BUTTON TWO")
+answerButtonTHREE = Buttons:new(centerX, centerY + 2000, "BUTTON THREE", 800, 200, "BUTTON THREE")
+
 
 
 
@@ -67,7 +69,6 @@ local nameText = display.newText(nameTextOptions)
 local name = "name"
 nameTextBox = native.newTextField( centerX, centerY, 800, 150 )
 local continueButton
--- Function to execute when continu eButton is released
 
 local function continueButtonRelease(event)
     if ( "ended" == event.phase ) then
@@ -76,7 +77,7 @@ local function continueButtonRelease(event)
         if nameTextBox.text == "" then
 			local alert = native.showAlert("Error - No Text Entered", "There was no text entered in the textbox, Please enter your name")
         elseif string.len(nameTextBox.text) <= 2 then
-            local alert = native.showAlert("Error - To few characters", "Please enter your name")
+            local alert = native.showAlert("Error - To few characters", "Please enter your name") -- for give me sir, This is the only way I could find to
         elseif string.find(nameTextBox.text, 1) ~= nil then
             local alert = native.showAlert("Error - Numbers Entered", "Please enter your name")
         elseif string.find(nameTextBox.text, 2) ~= nil then
@@ -108,12 +109,18 @@ local function continueButtonRelease(event)
             -- Game
             ----------------------------------------------------------
             score = 0
-            function GameFunction ()
-                QuestionText.y = centerY - 100
+            QuestionText.y = centerY - 100
+            QuestionText.text = "KIA ORA"
+            answerButtonONE:text("Andre")
+            local function handleButtonEvent(event)
+                    if self.id == "BUTTON ONE" then
+                        print("BUTTON_ONE")
+                    elseif self.id == "BUTTON TWO" then
+                        print("BUTTON_TWO")
+                    elseif self.id == "BUTTON THREE" then
+                        print("BUTTON_THREE")
+                    end
             end
-            GameFunction()
-
-
 
 
 
