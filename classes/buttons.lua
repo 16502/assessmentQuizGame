@@ -33,14 +33,16 @@ function Buttons:drawButtons()
         }
     )
 end
-function Buttons:place(x, y)
+function Buttons:place(x, y, text)
     self.button.x = x
     self.button.y = y
-end
-function Buttons:text(text)
     self.button.text = text
 end
-function Buttons:colours(r,g,b,a)
+function Buttons:text(text)
+  self.button.label = text
+  self.button.text = text
+end
+function Buttons:colors(r,g,b,a)
     self.button.fillColor = {default={r,g,b,a}, over={r,g,b,a}}
 end
 return Buttons

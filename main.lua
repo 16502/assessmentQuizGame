@@ -37,18 +37,24 @@ answers = {
     {"Chernobyl","Moscow","Saint Petersburg"}
 }
 correctAnswer = {"1","2","3","4","5","6","7"}
-print(questions[1])
-print(answers[1])
-print(correctAnswer[1])
 ----------------------------------------------------------
 -- Creating and drawing Buttons
 ----------------------------------------------------------
-QuestionText = display.newText("Question", centerX, centerY + 2000, native.systemFont, 72)
+local questionTextOptions =
+{
+    text = "Question",
+    x = centerX,
+    y = centerY + 2000,
+    width = 850,
+    font = native.systemFont,
+    fontSize = 72,
+    align = "center"  -- Alignment parameter
+}
+QuestionText = display.newText(questionTextOptions)
 
-answerButtonONE = Buttons:new(centerX, centerY + 2000, "BUTTON ONE", 800, 200, "BUTTON ONE")
-answerButtonTWO = Buttons:new(centerX, centerY + 2000, "BUTTON TWO", 800, 200, "BUTTON TWO")
-answerButtonTHREE = Buttons:new(centerX, centerY + 2000, "BUTTON THREE", 800, 200, "BUTTON THREE")
-
+answerButtonONE = Buttons:new(centerX, centerY + 2000, "text", 800, 200, "BUTTON ONE")
+answerButtonTWO = Buttons:new(centerX, centerY + 2000, "text", 800, 200, "BUTTON TWO")
+answerButtonTHREE = Buttons:new(centerX, centerY + 2000, "text", 800, 200, "BUTTON THREE")
 
 
 
@@ -102,36 +108,28 @@ local function continueButtonRelease(event)
             nameText:removeSelf()
             nameTextBox:removeSelf()
             continueButton:removeSelf()
-            answerButtonONE:place(centerX, centerY + 125)
-            answerButtonTWO:place(centerX, centerY + 425)
-            answerButtonTHREE:place(centerX, centerY+ 725)
+            answerButtonONE:place(centerX, centerY + 125,"ONE")
+            answerButtonTWO:place(centerX, centerY + 425, "TWO")
+            answerButtonTHREE:place(centerX, centerY + 725, "THREE")
             ----------------------------------------------------------
             -- Game
             ----------------------------------------------------------
             score = 0
-            QuestionText.y = centerY - 100
-            QuestionText.text = "KIA ORA"
-            answerButtonONE:text("Andre")
+            QuestionText.y = centerY - 500
+            QuestionText.text = questions[1]
+            answerButtonONE:text("HELLO")
+
+            -- CREATE A FUNCTION FOR changing the answerboxes as they will be used multiple times
+
             local function handleButtonEvent(event)
                     if self.id == "BUTTON ONE" then
-                        print("BUTTON_ONE")
+
                     elseif self.id == "BUTTON TWO" then
-                        print("BUTTON_TWO")
+
                     elseif self.id == "BUTTON THREE" then
-                        print("BUTTON_THREE")
-                    end
+
+                end
             end
-
-
-
-
-
-
-
-
-
-
-
         end
     end
 end
