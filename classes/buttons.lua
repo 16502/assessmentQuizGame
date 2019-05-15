@@ -14,6 +14,16 @@ function Buttons:__init(xPosition, yPosition, text, width, height, id)
 end
 
 function Buttons:drawButtons()
+    local function handleButtonEvent(event)
+        if self.id == "BUTTON_ONE" then
+            print("BUTTON_ONE")
+            answerButtonONE:changeText("answers[1][1]")
+        elseif self.id == "BUTTON_TWO" then
+            print("BUTTON_TWO")
+        elseif self.id == "BUTTON_THREE" then
+            print("BUTTON_THREE")
+        end
+    end
     self.button = widget.newButton(
         {
             label = self.text,
@@ -33,16 +43,13 @@ function Buttons:drawButtons()
         }
     )
 end
-function Buttons:place(x, y, text)
+function Buttons:place(x, y)
     self.button.x = x
     self.button.y = y
-    self.button.text = text
 end
-function Buttons:text(text)
-  self.button.label = text
-  self.button.text = text
+function Buttons:changeText(newText)
+  print(newText)
+  self.button:setLabel(newText)
 end
-function Buttons:colors(r,g,b,a)
-    self.button.fillColor = {default={r,g,b,a}, over={r,g,b,a}}
-end
+
 return Buttons

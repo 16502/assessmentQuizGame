@@ -51,13 +51,9 @@ local questionTextOptions =
     align = "center"  -- Alignment parameter
 }
 QuestionText = display.newText(questionTextOptions)
-
-answerButtonONE = Buttons:new(centerX, centerY + 2000, "text", 800, 200, "BUTTON ONE")
-answerButtonTWO = Buttons:new(centerX, centerY + 2000, "text", 800, 200, "BUTTON TWO")
-answerButtonTHREE = Buttons:new(centerX, centerY + 2000, "text", 800, 200, "BUTTON THREE")
-
-
-
+answerButtonONE = Buttons:new(centerX, centerY + 2000, "text", 800, 200, "BUTTON_ONE")
+answerButtonTWO = Buttons:new(centerX, centerY + 2000, "text", 800, 200, "BUTTON_TWO")
+answerButtonTHREE = Buttons:new(centerX, centerY + 2000, "text", 800, 200, "BUTTON_THREE")
 ----------------------------------------------------------
 -- Name Entry
 ----------------------------------------------------------
@@ -82,10 +78,8 @@ local function continueButtonRelease(event)
         print(name)
         if nameTextBox.text == "" then
 			local alert = native.showAlert("Error - No Text Entered", "There was no text entered in the textbox, Please enter your name")
-        elseif string.len(nameTextBox.text) <= 2 then
-            local alert = native.showAlert("Error - To few characters", "Please enter your name") -- for give me sir, This is the only way I could find to
         elseif string.find(nameTextBox.text, 1) ~= nil then
-            local alert = native.showAlert("Error - Numbers Entered", "Please enter your name")
+            local alert = native.showAlert("Error - Numbers Entered", "Please enter your name") -- forgive me sir, This is the only way I could find to
         elseif string.find(nameTextBox.text, 2) ~= nil then
             local alert = native.showAlert("Error - Numbers Entered", "Please enter your name")
         elseif string.find(nameTextBox.text, 3) ~= nil then
@@ -104,32 +98,25 @@ local function continueButtonRelease(event)
             local alert = native.showAlert("Error - Numbers Entered", "Please enter your name")
         elseif string.find(nameTextBox.text, 0) ~= nil then
             local alert = native.showAlert("Error - Numbers Entered", "Please enter your name")
+        elseif string.len(nameTextBox.text) <= 2 then
+            local alert = native.showAlert("Error - To few characters", "Please enter your name")
         else
             nameText:removeSelf()
             nameTextBox:removeSelf()
             continueButton:removeSelf()
-            answerButtonONE:place(centerX, centerY + 125,"ONE")
-            answerButtonTWO:place(centerX, centerY + 425, "TWO")
-            answerButtonTHREE:place(centerX, centerY + 725, "THREE")
+            answerButtonONE:place(centerX, centerY + 125)
+            answerButtonTWO:place(centerX, centerY + 425)
+            answerButtonTHREE:place(centerX, centerY + 725)
             ----------------------------------------------------------
             -- Game
             ----------------------------------------------------------
+            -- CREATE A FUNCTION FOR changing the answerboxes colour as they will be used multiple times
             score = 0
             QuestionText.y = centerY - 500
             QuestionText.text = questions[1]
-            answerButtonONE:text("HELLO")
-
-            -- CREATE A FUNCTION FOR changing the answerboxes as they will be used multiple times
-
-            local function handleButtonEvent(event)
-                    if self.id == "BUTTON ONE" then
-
-                    elseif self.id == "BUTTON TWO" then
-
-                    elseif self.id == "BUTTON THREE" then
-
-                end
-            end
+            answerButtonONE:changeText(answers[1][1])
+            answerButtonTWO:changeText(answers[1][2])
+            answerButtonTHREE:changeText(answers[1][3])
         end
     end
 end
