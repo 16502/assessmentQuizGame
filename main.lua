@@ -1,5 +1,4 @@
 require("classes.30logglobal")
-local widget = require("widget")
 local Buttons = require("classes.buttons") -- assigns the variable "buttons" to the class buttons so it can be called apon
 ----------------------------------------------------------
 -- Constants
@@ -8,10 +7,11 @@ local fullWidth = display.contentWidth
 local fullHeight = display.contentHeight
 local centerX = display.contentCenterX
 local centerY = display.contentCenterY
+local widget = require("widget")
 ----------------------------------------------------------
 -- Questions and answers
 ----------------------------------------------------------
-questions = {
+questions = { -- Creates an array of questions and stores questions to be asked
     "What Country has the largest population in the world?",
     "How long is the longest bridge in the world?",
     "What is the world's most popular sport?",
@@ -23,8 +23,7 @@ questions = {
     "What is the national flower of Wales?",
     "Which Russian town suffered an infamous nuclear disaster in 1986?"
 }
-
-answers = {
+answers = {-- Creates an array of answers and stores answers to the questions in seperate tables 3 answers for every question to be asked
     {"China","India","United States"},
     {"164,800m","157,317m","113,700m"},
     {"Football","Cricket","Hockey"},
@@ -36,7 +35,7 @@ answers = {
     {"Daffodil","Daisy","Poppy"},
     {"Chernobyl","Moscow","Saint Petersburg"}
 }
-correctAnswer = {"1","2","3","4","5","6","7"}
+correctAnswers = {"China","164,800m","Football","Avatar","206","250","Indian Ocean","George Orwell","Daffodil","Chernobyl"} -- Creates an array for the correct answers to questions
 ----------------------------------------------------------
 -- Creating and drawing Buttons
 ----------------------------------------------------------
@@ -51,9 +50,9 @@ local questionTextOptions =
     align = "center"  -- Alignment parameter
 }
 QuestionText = display.newText(questionTextOptions)
-answerButtonONE = Buttons:new(centerX, centerY + 2000, "text", 800, 200, "BUTTON_ONE")
-answerButtonTWO = Buttons:new(centerX, centerY + 2000, "text", 800, 200, "BUTTON_TWO")
-answerButtonTHREE = Buttons:new(centerX, centerY + 2000, "text", 800, 200, "BUTTON_THREE", correct)
+answerButtonONE = Buttons:new(centerX, centerY + 2000, answers[1][1], 800, 200, "BUTTON_ONE")
+answerButtonTWO = Buttons:new(centerX, centerY + 2000, answers[1][2], 800, 200, "BUTTON_TWO")
+answerButtonTHREE = Buttons:new(centerX, centerY + 2000, answers[1][3], 800, 200, "BUTTON_THREE")
 ----------------------------------------------------------
 -- Name Entry
 ----------------------------------------------------------
@@ -68,10 +67,9 @@ local nameTextOptions =
     align = "center"  -- Text alignment parameter
 }
 local nameText = display.newText(nameTextOptions)
-local name = "name"
+name = "name" -- Creates the variable name so that the name of the user can be stored. Isn't local because it have to be used in buttons.lua class
 nameTextBox = native.newTextField( centerX, centerY, 800, 150 )
 local continueButton
-
 local function continueButtonRelease(event)
     if ( "ended" == event.phase ) then
         name = nameTextBox.text
@@ -107,14 +105,9 @@ local function continueButtonRelease(event)
             answerButtonONE:place(centerX, centerY + 125)
             answerButtonTWO:place(centerX, centerY + 425)
             answerButtonTHREE:place(centerX, centerY + 725)
-            ----------------------------------------------------------
-            -- Game
-            ----------------------------------------------------------
-            -- CREATE A FUNCTION FOR changing the answerboxes colour as they will be used multiple times
             score = 0
             QuestionText.y = centerY - 500
             QuestionText.text = questions[1]
-
         end
     end
 end
