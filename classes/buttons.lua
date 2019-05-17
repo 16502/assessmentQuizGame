@@ -13,11 +13,16 @@ function Buttons:__init(xPosition, yPosition, text, width, height, id)
     self:drawButtons()
 end
 
+
+
 function Buttons:drawButtons()
     local function handleButtonEvent(event)
         if self.id == "BUTTON_ONE" then
             print("BUTTON_ONE")
-            answerButtonONE:changeText("answers[1][1]")
+            answerButtonONE:changeText("question 2")
+            answerButtonTWO:changeText("question 2")
+            answerButtonTHREE:changeText("question 2")
+
         elseif self.id == "BUTTON_TWO" then
             print("BUTTON_TWO")
         elseif self.id == "BUTTON_THREE" then
@@ -51,5 +56,7 @@ function Buttons:changeText(newText)
   print(newText)
   self.button:setLabel(newText)
 end
-
+function Buttons:changeColor()
+    self.button:setFillColor(1,1,1)
+end
 return Buttons
