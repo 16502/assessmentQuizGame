@@ -53,7 +53,7 @@ local questionTextOptions =
 QuestionText = display.newText(questionTextOptions)
 answerButtonONE = Buttons:new(centerX, centerY + 2000, "text", 800, 200, "BUTTON_ONE")
 answerButtonTWO = Buttons:new(centerX, centerY + 2000, "text", 800, 200, "BUTTON_TWO")
-answerButtonTHREE = Buttons:new(centerX, centerY + 2000, "text", 800, 200, "BUTTON_THREE")
+answerButtonTHREE = Buttons:new(centerX, centerY + 2000, "text", 800, 200, "BUTTON_THREE", correct)
 ----------------------------------------------------------
 -- Name Entry
 ----------------------------------------------------------
@@ -114,9 +114,7 @@ local function continueButtonRelease(event)
             score = 0
             QuestionText.y = centerY - 500
             QuestionText.text = questions[1]
-            answerButtonONE:changeText(answers[1][1])
-            answerButtonTWO:changeText(answers[1][2])
-            answerButtonTHREE:changeText(answers[1][3])
+
         end
     end
 end

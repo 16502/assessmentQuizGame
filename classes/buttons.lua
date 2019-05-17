@@ -2,14 +2,16 @@ local Buttons = class()
 Buttons.__name = "Buttons"
 local widget = require("widget")
 
-function Buttons:__init(xPosition, yPosition, text, width, height, id)
+function Buttons:__init(xPosition, yPosition, text, width, height, id, correct)
     self.group = group
     self.xPosition = xPosition -- Assigns the xPosition of the button to the parameter xPosition
     self.yPosition = yPosition -- Assigns the yPosition of the button to the parameter yPosition
     self.text = text -- Assigns the text in the button to the parameter text
     self.width = width -- Assigns the width of the button to the parameter width
     self.height = height -- Assigns the length of the button to the parameter length
+    self.correct = correct
     self.id = id -- Assigns the id of the button to id
+
     self:drawButtons()
 end
 
@@ -19,6 +21,7 @@ function Buttons:drawButtons()
     local function handleButtonEvent(event)
         if self.id == "BUTTON_ONE" then
             print("BUTTON_ONE")
+            display.setDefault("background", 0, 1, 0.1)
             answerButtonONE:changeText("question 2")
             answerButtonTWO:changeText("question 2")
             answerButtonTHREE:changeText("question 2")
