@@ -70,49 +70,49 @@ local nameText = display.newText(nameTextOptions)
 name = "name" -- Creates the variable name so that the name of the user can be stored. Isn't local because it have to be used in buttons.lua class
 nameTextBox = native.newTextField( centerX, centerY, 800, 150 )
 local continueButton
-local function continueButtonRelease(event)
+local function continueButtonRelease(event) -- When the continue button is pressed then do this...
     if ( "ended" == event.phase ) then
-        name = nameTextBox.text
-        print(name)
-        if nameTextBox.text == "" then
+        name = nameTextBox.text -- Sets the name the user entered into the varible name
+        print(name) -- prints name to the console
+        if nameTextBox.text == "" then -- Checks if text box is empty
 			local alert = native.showAlert("Error - No Text Entered", "There was no text entered in the textbox, Please enter your name")
-        elseif string.find(nameTextBox.text, 1) ~= nil then
+        elseif string.find(nameTextBox.text, 1) ~= nil then -- checks if text box contains number 1
             local alert = native.showAlert("Error - Numbers Entered", "Please enter your name") -- forgive me sir, This is the only way I could find to
-        elseif string.find(nameTextBox.text, 2) ~= nil then
+        elseif string.find(nameTextBox.text, 2) ~= nil then -- checks if text box contains number 2
             local alert = native.showAlert("Error - Numbers Entered", "Please enter your name")
-        elseif string.find(nameTextBox.text, 3) ~= nil then
+        elseif string.find(nameTextBox.text, 3) ~= nil then -- checks if text box contains number 3
             local alert = native.showAlert("Error - Numbers Entered", "Please enter your name")
-        elseif string.find(nameTextBox.text, 4) ~= nil then
+        elseif string.find(nameTextBox.text, 4) ~= nil then -- checks if text box contains number 4
             local alert = native.showAlert("Error - Numbers Entered", "Please enter your name")
-        elseif string.find(nameTextBox.text, 5) ~= nil then
+        elseif string.find(nameTextBox.text, 5) ~= nil then -- checks if text box contains number 5
             local alert = native.showAlert("Error - Numbers Entered", "Please enter your name")
-        elseif string.find(nameTextBox.text, 6) ~= nil then
+        elseif string.find(nameTextBox.text, 6) ~= nil then -- checks if text box contains number 6
             local alert = native.showAlert("Error - Numbers Entered", "Please enter your name")
-        elseif string.find(nameTextBox.text, 7) ~= nil then
+        elseif string.find(nameTextBox.text, 7) ~= nil then -- checks if text box contains number 7
             local alert = native.showAlert("Error - Numbers Entered", "Please enter your name")
-        elseif string.find(nameTextBox.text, 8) ~= nil then
+        elseif string.find(nameTextBox.text, 8) ~= nil then -- checks if text box contains number 8
             local alert = native.showAlert("Error - Numbers Entered", "Please enter your name")
-        elseif string.find(nameTextBox.text, 9) ~= nil then
+        elseif string.find(nameTextBox.text, 9) ~= nil then -- checks if text box contains number 9
             local alert = native.showAlert("Error - Numbers Entered", "Please enter your name")
-        elseif string.find(nameTextBox.text, 0) ~= nil then
+        elseif string.find(nameTextBox.text, 0) ~= nil then -- checks if text box contains number 0
             local alert = native.showAlert("Error - Numbers Entered", "Please enter your name")
-        elseif string.len(nameTextBox.text) <= 2 then
+        elseif string.len(nameTextBox.text) <= 2 then -- Checks if the number of characters sumbitted is less than two
             local alert = native.showAlert("Error - To few characters", "Please enter your name")
         else
-            nameText:removeSelf()
+            nameText:removeSelf() -- Moves text, textbox and the button off of the screen
             nameTextBox:removeSelf()
             continueButton:removeSelf()
-            answerButtonONE:place(centerX, centerY + 125)
+            answerButtonONE:place(centerX, centerY + 125) -- Places the answer buttons to a position viewable on the screen
             answerButtonTWO:place(centerX, centerY + 425)
             answerButtonTHREE:place(centerX, centerY + 725)
-            score = 0
-            QuestionText.y = centerY - 500
-            QuestionText.text = questions[1]
+            score = 0 -- Sets the players score to 0
+            QuestionText.y = centerY - 500 -- positions QuestionText
+            QuestionText.text = questions[1] -- Sets QuestionText to display the first question
         end
     end
 end
 -- Create the widget
-continueButton = widget.newButton(
+continueButton = widget.newButton( -- Creates and sets parameters for but continue button
     {
         x = centerX - 265,
         y = centerY + 175,
